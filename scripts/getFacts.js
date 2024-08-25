@@ -6,7 +6,7 @@ export let randomFact = async function () {
         }
     })
     const nextText = await nextResponse.json();
-    document.querySelector(".js-random-fact").innerHTML = `${nextText.text}`
+    document.querySelector(".js-random-fact").innerHTML = `${nextText.text} kasfjksdfasjdfkajsdkjfkjaskdjfkjkasdjkfjkasjdkfjklasjkdfjasdjkfjkajsdkfjkjaskdjfkjaksjdkfjkasjdkfkasjdkfjkajdjfjaskdjfkjadjkfjkajkdfjkaskfdjaksjfkdjksjdkfjkasdkfj`
 }
 
 export let todaysFact = async function () {
