@@ -74,6 +74,7 @@ button {
     text-align: justify;
     padding-bottom: 10px;
     padding-top: 10px;
+    word-wrap:break-word;
 }
 
 .page-bright-image .navbar, .page-bright-image .cards, .page-bright-image .day-and-date {
