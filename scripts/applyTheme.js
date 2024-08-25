@@ -15,12 +15,12 @@ const applyDefaultTheme = () => {
     const modeButtonElement = document.querySelector('.js-mode-button');
     if (mode === 'light') {
         modeButtonElement.innerHTML = `
-        <img src="./images/brightness.png">
+        <img src="./images/night-mode.png">
         `;
         pageElement.classList.add("page-bright-image");
     } else {
         modeButtonElement.innerHTML = `
-        <img src="./images/night-mode.png">
+        <img src="./images/brightness.png">
         `;
         pageElement.classList.add("page-dark-image");
     }

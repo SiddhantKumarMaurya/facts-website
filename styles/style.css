@@ -68,6 +68,17 @@ button {
     cursor: pointer;
 }
 
+/* .circle {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+    top: 24px;
+    right: 45px;
+    background-color: rgb(157, 129, 99);
+    box-shadow: inset 1px 1px -1px -1px rgb(83, 77, 69);
+} */
+
 .navbar-items, .day-and-date {
     display: flex;
     justify-content: space-around;
@@ -149,25 +160,29 @@ button {
     padding: 5px;
     cursor: pointer;
 }
-.page-bright-image .refresh-button {
-   box-shadow: 0px 0px 3px 3px rgb(252, 194, 127);
+.page-bright-image .refresh-button, .page-dark-image .mode-button {
+   box-shadow: 0px 0px 10px 10px rgb(252, 194, 127);
    background-color: rgb(160, 100, 54);
-   
 }
 
-.page-dark-image .refresh-button {
+.page-dark-image .refresh-button  {
     box-shadow: 0px 0px 3px 3px rgb(86, 69, 49);
-    background-color: rgb(59, 83, 83);
+    background-color: rgb(51, 73, 74);
 }
 
-.page-dark-image .refresh-button, .page-bright-image .refresh-button {
+.page-bright-image .mode-button{
+    box-shadow: 0px 0px 10px 10px rgb(86, 69, 49);
+    background-color: rgb(86, 69, 49);
+}
+
+.page-dark-image .refresh-button, .page-bright-image .refresh-button, .page-bright-image .mode-button, .page-dark-image .mode-button {
     transition: border-radius 0.3 ease, 
     box-shadow 0.3s ease, 
     background-image 0.3s ease;
 
 }
 
-.refesh-button img {
+.refesh-button img{
     width: 20px;
     height: 20px;
 }
