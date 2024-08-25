@@ -12,7 +12,6 @@ html, body {
     display: flex;
     justify-content: space-around;
     color:rgb(255, 255, 255);
-    background-size:auto;
     background-repeat: no-repeat;
     background-position: center center;
     height: 100%;
@@ -21,10 +20,12 @@ html, body {
 
 .page-bright-image {
     background-image:url(../images/background-bright.jpg);
+    background-size:150%;
 }
 
 .page-dark-image {
     background-image:url(../images/background-dark.jpg);
+    background-size:200%;
 }
 
 div {
@@ -74,7 +75,7 @@ button {
     text-align: justify;
     padding-bottom: 10px;
     padding-top: 10px;
-    word-wrap:break-word;
+    word-wrap:break-word; /* When the word length is too long, it overflow. To overcome this situation this property has been used.*/
 }
 
 .page-bright-image .navbar, .page-bright-image .cards, .page-bright-image .day-and-date {
