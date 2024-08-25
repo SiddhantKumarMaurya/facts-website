@@ -4,6 +4,18 @@ html, body {
     height: 100%;
     margin: 0;
 }
+button:focus, button:active {
+    outline: none;
+    -webkit-tap-highlight-color: transparent; /*Whenever I touched the buttons in mobile view, it would highlight them with blue color around it, so it disable that I had to use this property*/
+}
+
+p {
+    margin: 0;
+    /* background: linear-gradient(45deg, #f06, #f9a);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+}
 
 .page {
     font-family: "Montserrat";
@@ -25,8 +37,14 @@ html, body {
 
 .page-dark-image {
     background-image:url(../images/background-dark.jpg);
-    background-size:400%;
+    background-size:200%;
 }
+
+.page-bright-image,
+.page-dark-image {
+    transition: background-size 0.5s ease, background-position 0.5s ease; /* Smooth transition for background size and position */
+}
+
 
 div {
     margin-bottom: 30px;
@@ -70,7 +88,8 @@ button {
     text-align: center;
 }
 
-.cards{
+.cards-today, .cards-random{
+    position:relative;
     width: 300px;
     text-align: justify;
     padding-bottom: 10px;
@@ -78,42 +97,165 @@ button {
     word-wrap:break-word; /* When the word length is too long, it overflow. To overcome this situation this property has been used.*/
 }
 
-.page-bright-image .navbar, .page-bright-image .cards, .page-bright-image .day-and-date {
+.page-bright-image .navbar, .page-bright-image .cards, .page-bright-image .day-and-date, 
+.page-bright-image .glass-morph{
     border-radius: 20px;
     box-shadow: 1px 1px 1px 1px rgb(252, 194, 127);
-}
-
-.page-dark-image .navbar, .page-dark-image .cards, .page-dark-image .day-and-date {
-    border-radius: 20px;
-    box-shadow: 1px 1px 1px 1px rgb(255, 101, 101);
-}
-
-.todays-fact, .random-fact {
-    margin: 15px;
-}
-
-.random-fact-header {
-    display:flex;
-    margin-bottom: -10px;
-}
-
-.random-fact-header .headers {
-    flex:10;
-    padding-left:40px;
-}
-
-.refresh-button {
-    flex:1;
-    padding-right: 15px;
-}
-
-.glass-morph {
-    background-color: transparent;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px); /* some of the broser that don't support backdrop-filter */
     background-image: linear-gradient(
         120deg,
         rgba(255, 255, 255, 0.3),
         rgba(0, 0, 0, 0.2)
     );
+}
+
+.page-dark-image .navbar, .page-dark-image .cards, .page-dark-image .day-and-date,
+.page-dark-image .glass-morph {
+    border-radius: 20px;
+    box-shadow: -1px 1px 1px 1px rgb(86, 69, 49);
+    background-image: linear-gradient(
+        120deg,
+        rgba(0, 0, 0, 0.2),
+        rgba(255, 255, 255, 0.3)
+    );
+}
+
+.page-bright-image .navbar, .page-bright-image .cards, .page-bright-image .day-and-date, 
+.page-bright-image .glass-morph,
+.page-dark-image .navbar, .page-dark-image .cards, .page-dark-image .day-and-date,
+.page-dark-image .glass-morph {
+    border-radius: 20px;
+    transition: border-radius 0.3s ease, 
+                box-shadow 0.3s ease, 
+                background-image 0.3s ease; /* Add transition property */
+}
+
+
+.todays-fact, .random-fact {
+    margin: 15px;
+    height: 130px;
+    overflow-y: auto; /* To enable scrolling if the text become too long */
+    scrollbar-width: none; /* To hide the scrollbar*/
+}
+
+.random-fact-header {
+    padding-top: 5px;
+    margin-bottom: 5px;
+}
+
+.refresh-button {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    padding: 5px;
+    cursor: pointer;
+}
+.page-bright-image .refresh-button {
+   box-shadow: 0px 0px 3px 3px rgb(252, 194, 127);
+   background-color: rgb(160, 100, 54);
+   
+}
+
+.page-dark-image .refresh-button {
+    box-shadow: 0px 0px 3px 3px rgb(86, 69, 49);
+    background-color: rgb(59, 83, 83);
+}
+
+.page-dark-image .refresh-button, .page-bright-image .refresh-button {
+    transition: border-radius 0.3 ease, 
+    box-shadow 0.3s ease, 
+    background-image 0.3s ease;
+
+}
+
+.refesh-button img {
+    width: 20px;
+    height: 20px;
+}
+
+.glass-morph{
+    background-color: transparent;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); /* some of the broser that don't support backdrop-filter */
+}
+
+
+/* Sliding animations */
+/* Keyframes for animations */
+@keyframes slide-down {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-right {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-left {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+p {
+    animation: fadeIn 1s ease-out;
+} */
+
+
+/* Apply animations */
+.navbar {
+    animation: slide-down 0.5s ease-out;
+}
+
+.day-and-date {
+    animation: slide-right 0.5s ease-out;
+}
+
+/* .cards:first-of-type {
+    animation: slide-left 0.5s ease-out;
+}
+
+.cards:last-of-type {
+    animation: slide-up 0.5s ease-out;
+} */
+
+.cards-today {
+    animation: slide-left 0.5s ease-out;
+}
+
+.cards-random {
+    animation: slide-up 0.5s ease-out;
 }
